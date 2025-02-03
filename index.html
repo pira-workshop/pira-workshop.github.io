@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVPR Workshop - Advanced Computer Vision Techniques</title>
+    <title>CVPR 2025 Workshop - Perception for Industrial Robotics Automation (PIRA)</title>
     <style>
         /* Reset and base styles */
         * {
@@ -33,42 +33,89 @@
             padding: 2rem 0;
         }
 
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .header-titles {
+            flex-shrink: 0;
+        }
+
+        .header-titles h1 {
+            margin: 0;
+        }
+
+        .header-titles p {
+            margin: 0;
         }
 
         /* Navigation */
         .nav-menu {
-            margin-top: 1rem;
+            margin-left: auto;
         }
         
         .nav-menu ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
         }
         
         .nav-menu a {
             color: white;
             text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s, border 0.2s;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid transparent;
         }
         
         .nav-menu a:hover {
-            opacity: 1;
-            text-decoration: underline;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
         }
 
         /* Main content */
         main {
             padding: 2rem 0;
+            margin-top: 2rem;
         }
 
         section {
             margin-bottom: 3rem;
+        }
+
+        #about {
+            margin-top: 2rem;
         }
 
         h2 {
@@ -136,6 +183,10 @@
             text-align: left;
         }
 
+        .schedule-table td:first-child {
+            white-space: nowrap;
+        }
+
         .schedule-table th {
             background-color: #f9fafb;
             font-weight: 500;
@@ -166,6 +217,29 @@
             margin-bottom: 2rem;
         }
 
+        .challenge-content {
+            display: flex;
+            align-items: stretch;
+            gap: 1.5rem;
+        }
+
+        .challenge-logo {
+            flex-shrink: 0;
+            width: 150px;
+            display: flex;
+            align-items: center;
+        }
+
+        .challenge-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .challenge-text {
+            flex: 1;
+        }
+
         .challenge-button {
             display: inline-block;
             background-color: #2563eb;
@@ -191,7 +265,44 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1100px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1rem;
+            }
+
+            .nav-menu ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-menu.active ul {
+                display: flex;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 0.75rem 1rem;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
             .speakers-grid {
                 grid-template-columns: 1fr;
             }
@@ -199,10 +310,16 @@
             header h1 {
                 font-size: 1.75rem;
             }
+        }
 
-            .nav-menu ul {
-                gap: 1rem;
-                justify-content: center;
+        @media (max-width: 640px) {
+            .challenge-content {
+                flex-direction: column;
+            }
+            
+            .challenge-logo {
+                width: 100px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -210,17 +327,26 @@
 <body>
     <header>
         <div class="container">
-            <h1>CVPR 2023 Workshop</h1>
-            <p>Advanced Computer Vision Techniques</p>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#challenge">Special Challenge</a></li>
-                    <li><a href="#speakers">Speakers</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#organizers">Organizers</a></li>
-                </ul>
-            </nav>
+            <div class="header-content">
+                <div class="header-titles">
+                    <h1>CVPR 2025 Workshop</h1>
+                    <p>Perception for Industrial Robotics Automation (PIRA)</p>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#challenge">Challenge</a></li>
+                        <li><a href="#speakers">Speakers</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#organizers">Organizers</a></li>
+                    </ul>
+                    <button class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -228,55 +354,70 @@
         <section id="about">
             <h2>About the Workshop</h2>
             <p>
-                This workshop aims to explore cutting-edge techniques in computer vision,
-                bringing together researchers and practitioners to discuss the latest
-                advancements in the field.
+                The Perception for Industrial Robotics Automation (PIRA) workshop is designed to bridge the gap between advanced computer vision research and its practical application in industrial robotics. Despite significant progress in CV, robust deployment in tasks such as robotic bin picking remains challenging.
+            </p>
+            <p>
+                Focusing on topics such as 3D scene understanding, 3D vision, egocentric and embodied AI, foundation models, robot learning, and synthetic data, PIRA will bring together researchers and practitioners to drive innovation in reliability, cycle time, and scalability for industrial applications.
             </p>
         </section>
 
         <section id="challenge" class="challenge-section">
-            <h2>Special Challenge</h2>
-            <p>
-                We are excited to announce a special computer vision challenge running in parallel with our workshop.
-                Participants will have the opportunity to showcase their skills and compete for prizes.
-            </p>
-            <a href="https://example.com/challenge" class="challenge-button">Learn More About the Challenge</a>
+            <div class="challenge-content">
+                <div class="challenge-logo">
+                    <img src="challenge_logo.png" alt="Challenge Logo">
+                </div>
+                <div class="challenge-text">
+                    <h2>Intrinsic Bin Picking Challenge</h2>
+                    <p>
+                        In collaboration with OpenCV and the BOP benchmark, the Intrinsic Bin Picking Challenge seeks to accelerate progress in 6DoF pose estimation for industrial-grade parts. Participants will develop robust solutions for robotic bin-picking pipelines, addressing real-world challenges of efficiency and accuracy.
+                    </p>
+                    <p>
+                        The challenge unfolds in three phases:
+                        <br><strong>Phase 1:</strong> Development – optimize algorithms using an initial dataset.
+                        <br><strong>Phase 2:</strong> Vision-Only Testing – adapt solutions to new, unseen parts.
+                        <br><strong>Phase 3:</strong> Robot-in-the-Loop Testing – deploy top solutions on a real robotic system.
+                    </p>
+                    <p>
+                        For an overview of a bin-picking setup, watch this <a href="https://www.youtube.com/watch?v=9j9G8yEXI_g" target="_blank">video</a>.
+                    </p>
+                    <a href="http://bpc.opencv.org/" class="challenge-button">Learn More About the Challenge</a>
+                </div>
+            </div>
         </section>
 
         <section id="speakers">
             <h2>Invited Speakers</h2>
             <div class="speakers-grid">
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Dr. Jane Smith" class="speaker-photo">
-                    <h3 class="speaker-name">Dr. Jane Smith</h3>
-                    <p class="speaker-affiliation">Stanford University</p>
+                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Vincent Vanhoucke" class="speaker-photo">
+                    <h3 class="speaker-name">Vincent Vanhoucke</h3>
+                    <p class="speaker-affiliation">Waymo</p>
                     <div class="speaker-bio">
-                        Dr. Jane Smith is a leading researcher in computer vision and machine learning. 
-                        Her work focuses on deep learning applications in visual recognition tasks. 
-                        She has published extensively in top conferences and journals, including CVPR, 
-                        ICCV, and ECCV.
+                        Vincent is a Distinguished Engineer at Waymo, whose work spans robotics, machine learning, and visual perception. He co-founded the Robot Learning conference and has received multiple awards.
                     </div>
                 </div>
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Prof. John Doe" class="speaker-photo">
-                    <h3 class="speaker-name">Prof. John Doe</h3>
-                    <p class="speaker-affiliation">MIT</p>
+                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Bowen Wen" class="speaker-photo">
+                    <h3 class="speaker-name">Bowen Wen</h3>
+                    <p class="speaker-affiliation">NVIDIA</p>
                     <div class="speaker-bio">
-                        Professor John Doe leads the Computer Vision Lab at MIT. 
-                        His research interests include 3D scene understanding, 
-                        visual SLAM, and autonomous navigation systems. 
-                        He has received numerous awards for his contributions to the field.
+                        A Senior Research Scientist at NVIDIA, Bowen specializes in robotic perception and computer vision, earning accolades for his impactful research.
                     </div>
                 </div>
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Dr. Emily Brown" class="speaker-photo">
-                    <h3 class="speaker-name">Dr. Emily Brown</h3>
-                    <p class="speaker-affiliation">Google Research</p>
+                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Kartik Venkataraman" class="speaker-photo">
+                    <h3 class="speaker-name">Kartik Venkataraman</h3>
+                    <p class="speaker-affiliation">Intrinsic (Alphabet)</p>
                     <div class="speaker-bio">
-                        Dr. Emily Brown is a Senior Research Scientist at Google Research. 
-                        She specializes in computer vision for autonomous systems and 
-                        has made significant contributions to object detection and 
-                        tracking in dynamic environments.
+                        As Head of Perception R&D at Intrinsic, Kartik is pioneering work in plenoptic imaging, neural rendering, and multi-view approaches for industrial and consumer applications.
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Kartik Iyer" class="speaker-photo">
+                    <h3 class="speaker-name">Kartik Iyer</h3>
+                    <p class="speaker-affiliation">TRUMPF Smart Factory</p>
+                    <div class="speaker-bio">
+                        With over 20 years in the fabrication industry, Kartik directs the TRUMPF Smart Factory in Chicago, integrating advanced robotics and automation to transform manufacturing.
                     </div>
                 </div>
             </div>
@@ -293,32 +434,40 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>9:00 AM</td>
-                        <td>Opening Remarks</td>
+                        <td>9:00 AM - 9:10 AM</td>
+                        <td>Opening Remarks &amp; Welcome</td>
                     </tr>
                     <tr>
-                        <td>9:30 AM</td>
-                        <td>Keynote Speaker: Dr. Jane Smith</td>
+                        <td>9:10 AM - 10:00 AM</td>
+                        <td>Keynote 1</td>
                     </tr>
                     <tr>
-                        <td>11:00 AM</td>
-                        <td>Coffee Break</td>
+                        <td>10:10 AM - 11:00 AM</td>
+                        <td>Keynote 2</td>
                     </tr>
                     <tr>
-                        <td>11:30 AM</td>
-                        <td>Panel Discussion: Future of Computer Vision</td>
+                        <td>11:10 AM - 12:00 PM</td>
+                        <td>Keynote 3</td>
                     </tr>
                     <tr>
-                        <td>1:00 PM</td>
-                        <td>Lunch Break</td>
+                        <td>12:00 PM - 1:20 PM</td>
+                        <td>Lunch</td>
                     </tr>
                     <tr>
-                        <td>2:00 PM</td>
-                        <td>Poster Sessions</td>
+                        <td>1:20 PM - 2:10 PM</td>
+                        <td>Keynote 4</td>
                     </tr>
                     <tr>
-                        <td>4:00 PM</td>
-                        <td>Closing Remarks</td>
+                        <td>2:20 PM - 3:10 PM</td>
+                        <td>Keynote 5</td>
+                    </tr>
+                    <tr>
+                        <td>3:20 PM - 4:00 PM</td>
+                        <td>Intrinsic Bin Picking Challenge: Introduction &amp; Results</td>
+                    </tr>
+                    <tr>
+                        <td>4:00 PM - 5:00 PM</td>
+                        <td>Oral Session for 3 Winning Teams</td>
                     </tr>
                 </tbody>
             </table>
@@ -327,17 +476,44 @@
         <section id="organizers">
             <h2>Organizers</h2>
             <ul class="organizers-list">
-                <li>Dr. Michael Johnson, University of California</li>
-                <li>Prof. Sarah Lee, ETH Zurich</li>
-                <li>Dr. David Chen, Microsoft Research</li>
+                <li><strong>Vage Taamazyan</strong> – Senior Imaging Scientist at Intrinsic (Alphabet)</li>
+                <li><strong>Agastya Kalra</strong> – Senior Staff Engineer at Intrinsic (Alphabet)</li>
+                <li><strong>Aarrushi Shandilya</strong> – Computational Imaging Engineer at Intrinsic (Alphabet)</li>
+                <li><strong>Huaijin Chen, Ph.D.</strong> – Assistant Professor of Computer Science at the University of Hawaiʻi at Mānoa</li>
+                <li><strong>Krzysztof Choromanski, Ph.D.</strong> – Leads the Vision Team at GDM Robotics</li>
+                <li><strong>Martin Sundermeyer</strong> – Research Scientist at Google</li>
+                <li><strong>Phil Nelson</strong> – Director of Content &amp; Creative at the Open Source Vision Foundation (OpenCV)</li>
+                <li><strong>Satya Mallick, Ph.D.</strong> – CEO of OpenCV.org and Big Vision LLC</li>
+                <li><strong>Stan Birchfield, Ph.D.</strong> – Senior Research Manager at NVIDIA</li>
+                <li><strong>Tim Salzmann</strong> – Research Scientist at Intrinsic (Alphabet)</li>
+                <li><strong>Tomas Hodan</strong> – Research Scientist at Meta Reality Labs</li>
+                <li><strong>Yang Qian</strong> – Ph.D. candidate at the University of Hawaiʻi at Mānoa</li>
             </ul>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 CVPR Workshop. All rights reserved.</p>
+            <p>&copy; 2025 CVPR Workshop. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
