@@ -28,8 +28,7 @@
 
         /* Header */
         header {
-            background-color: #2563eb;
-            color: white;
+            background: #2962FF;  /* More vibrant blue */
             padding: 2rem 0;
         }
 
@@ -37,30 +36,55 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            align-items: center;
-        }
-
-        .header-titles {
-            flex-shrink: 0;
+            flex-grow: 1;
         }
 
         .header-titles h1 {
+            color: white;
+            font-size: 2.5rem;
             margin: 0;
+            line-height: 1.2;
         }
 
         .header-titles p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            gap: 1.5rem;
             margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: white;
+        }
+
+        .header-logo {
+            width: 360px;
+            height: auto;
+            margin-left: 2rem;
         }
 
         /* Navigation */
         .nav-menu {
-            margin-left: auto;
+            margin-left: 0;
+            margin-top: 1rem;
+            width: 100%;
         }
         
         .nav-menu ul {
@@ -127,7 +151,7 @@
         /* Speakers grid */
         .speakers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -181,10 +205,6 @@
         .schedule-table td {
             padding: 0.75rem 1.5rem;
             text-align: left;
-        }
-
-        .schedule-table td:first-child {
-            white-space: nowrap;
         }
 
         .schedule-table th {
@@ -322,6 +342,60 @@
                 margin: 0 auto;
             }
         }
+
+        /* Add/update these media queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 0;
+            }
+
+            header .container {
+                flex-direction: column;
+                padding: 0.5rem 1rem;
+                position: relative;
+            }
+
+            .header-titles h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+                padding-right: 3rem;
+            }
+
+            .header-titles p {
+                font-size: 0.9rem;
+                margin: 0.25rem 0;
+                padding-right: 3rem;
+            }
+
+            .hamburger {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+            }
+
+            .header-logo {
+                display: none;
+            }
+
+            .nav-menu {
+                width: 100%;
+                margin-top: 0.25rem;  /* Reduced margin */
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.75rem 0.75rem;  /* Reduced padding */
+            }
+            
+            .schedule-table td:first-child {
+                width: 40%;  /* Fixed width for time column */
+                font-size: 0.9rem;  /* Slightly smaller font */
+            }
+            
+            .schedule-table td:last-child {
+                width: 60%;  /* Fixed width for event column */
+            }
+        }
     </style>
 </head>
 <body>
@@ -329,8 +403,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-titles">
-                    <h1>CVPR 2025 Workshop</h1>
-                    <p>Perception for Industrial Robotics Automation (PIRA)</p>
+                    <h1>Perception for Industrial<br>Robotics Automation (PIRA)</h1>
+                    <p>CVPR 2025 Workshop</p>
                 </div>
                 <nav class="nav-menu">
                     <ul>
@@ -347,6 +421,7 @@
                     </button>
                 </nav>
             </div>
+            <img src="cvpr-navbar-logo.svg" alt="CVPR Logo" class="header-logo">
         </div>
     </header>
 
@@ -354,10 +429,8 @@
         <section id="about">
             <h2>About the Workshop</h2>
             <p>
-                The Perception for Industrial Robotics Automation (PIRA) workshop is designed to bridge the gap between advanced computer vision research and its practical application in industrial robotics. Despite significant progress in CV, robust deployment in tasks such as robotic bin picking remains challenging.
-            </p>
-            <p>
-                Focusing on topics such as 3D scene understanding, 3D vision, egocentric and embodied AI, foundation models, robot learning, and synthetic data, PIRA will bring together researchers and practitioners to drive innovation in reliability, cycle time, and scalability for industrial applications.
+                Welcome to the Perception for Industrial Robotics Automation (PIRA) Workshop! This event brings together advanced computer vision research and practical industrial robotics. Even with many breakthroughs, solving real-world tasks like robotic bin picking is still challenging.
+                At PIRA, we focus on topics like 3D scene understanding, 3D vision, egocentric and embodied AI, foundation models, robot learning, and synthetic data. Our goal is to connect researchers and industry experts to build more reliable, faster, and scalable industrial solutions.
             </p>
         </section>
 
@@ -367,18 +440,12 @@
                     <img src="challenge_logo.png" alt="Challenge Logo">
                 </div>
                 <div class="challenge-text">
-                    <h2>Intrinsic Bin Picking Challenge</h2>
+                    <h2>Perception Challenge for Bin Picking</h2>
                     <p>
-                        In collaboration with OpenCV and the BOP benchmark, the Intrinsic Bin Picking Challenge seeks to accelerate progress in 6DoF pose estimation for industrial-grade parts. Participants will develop robust solutions for robotic bin-picking pipelines, addressing real-world challenges of efficiency and accuracy.
+                        We invite you to join our Intrinsic Bin Picking Challenge, featuring $60k in prizes! The competition runs from February 1st to May 1st, and winners will present their solutions at the workshop.
                     </p>
                     <p>
-                        The challenge unfolds in three phases:
-                        <br><strong>Phase 1:</strong> Development – optimize algorithms using an initial dataset.
-                        <br><strong>Phase 2:</strong> Vision-Only Testing – adapt solutions to new, unseen parts.
-                        <br><strong>Phase 3:</strong> Robot-in-the-Loop Testing – deploy top solutions on a real robotic system.
-                    </p>
-                    <p>
-                        For an overview of a bin-picking setup, watch this <a href="https://www.youtube.com/watch?v=9j9G8yEXI_g" target="_blank">video</a>.
+                        This challenge is organized by <a href="https://opencv.org/">OpenCV</a> in collaboration with <a href="https://www.intrinsic.ai/">Intrinsic</a>, <a href="https://bop.felk.cvut.cz/">BOP</a>, <a href="https://orbbec.com/">Orbbec</a>, and the <a href="https://www.hawaii.edu/">University of Hawaii</a>.
                     </p>
                     <a href="http://bpc.opencv.org/" class="challenge-button">Learn More About the Challenge</a>
                 </div>
@@ -389,7 +456,7 @@
             <h2>Invited Speakers</h2>
             <div class="speakers-grid">
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Vincent Vanhoucke" class="speaker-photo">
+                    <img src="Vincent-Vanhoucke.jpg" alt="Vincent Vanhoucke" class="speaker-photo">
                     <h3 class="speaker-name">Vincent Vanhoucke</h3>
                     <p class="speaker-affiliation">Waymo</p>
                     <div class="speaker-bio">
@@ -397,7 +464,15 @@
                     </div>
                 </div>
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Bowen Wen" class="speaker-photo">
+                    <img src="kartiktrumpf_web_mam.webp" alt="Kartik Iyer" class="speaker-photo">
+                    <h3 class="speaker-name">Kartik Iyer</h3>
+                    <p class="speaker-affiliation">TRUMPF Smart Factory</p>
+                    <div class="speaker-bio">
+                        With over 20 years in the fabrication industry, Kartik directs the TRUMPF Smart Factory in Chicago, integrating advanced robotics and automation to transform manufacturing.
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <img src="bowen-wen.jpg" alt="Bowen Wen" class="speaker-photo">
                     <h3 class="speaker-name">Bowen Wen</h3>
                     <p class="speaker-affiliation">NVIDIA</p>
                     <div class="speaker-bio">
@@ -405,19 +480,11 @@
                     </div>
                 </div>
                 <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Kartik Venkataraman" class="speaker-photo">
+                    <img src="kartik.jpg" alt="Kartik Venkataraman" class="speaker-photo">
                     <h3 class="speaker-name">Kartik Venkataraman</h3>
                     <p class="speaker-affiliation">Intrinsic (Alphabet)</p>
                     <div class="speaker-bio">
                         As Head of Perception R&D at Intrinsic, Kartik is pioneering work in plenoptic imaging, neural rendering, and multi-view approaches for industrial and consumer applications.
-                    </div>
-                </div>
-                <div class="speaker-card">
-                    <img src="https://sjc.microlink.io/zJ7YFXg21DRK1spw3zIMLN2gZ9zse4MPrPwINYvmBaVCMrAoAaoL_k65AVTDeuflLaTCOfOAt3C59NE6mZowkQ.jpeg" alt="Kartik Iyer" class="speaker-photo">
-                    <h3 class="speaker-name">Kartik Iyer</h3>
-                    <p class="speaker-affiliation">TRUMPF Smart Factory</p>
-                    <div class="speaker-bio">
-                        With over 20 years in the fabrication industry, Kartik directs the TRUMPF Smart Factory in Chicago, integrating advanced robotics and automation to transform manufacturing.
                     </div>
                 </div>
             </div>
@@ -434,40 +501,32 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>9:00 AM - 9:10 AM</td>
-                        <td>Opening Remarks &amp; Welcome</td>
+                        <td>9:00-9:10a</td>
+                        <td>Opening Remarks & Welcome</td>
                     </tr>
                     <tr>
-                        <td>9:10 AM - 10:00 AM</td>
-                        <td>Keynote 1</td>
+                        <td>9:10-9:40a</td>
+                        <td>Vincent Vanhoucke</td>
                     </tr>
                     <tr>
-                        <td>10:10 AM - 11:00 AM</td>
-                        <td>Keynote 2</td>
+                        <td>9:45-10:15a</td>
+                        <td>Bowen Wen</td>
                     </tr>
                     <tr>
-                        <td>11:10 AM - 12:00 PM</td>
-                        <td>Keynote 3</td>
+                        <td>10:20-10:50a</td>
+                        <td>Kartik Iyer</td>
                     </tr>
                     <tr>
-                        <td>12:00 PM - 1:20 PM</td>
-                        <td>Lunch</td>
+                        <td>10:55-11:25a</td>
+                        <td>Kartik Venkataraman</td>
                     </tr>
                     <tr>
-                        <td>1:20 PM - 2:10 PM</td>
-                        <td>Keynote 4</td>
+                        <td>11:30a-12:10p</td>
+                        <td>Perception Challenge for Bin Picking Results and Awards</td>
                     </tr>
                     <tr>
-                        <td>2:20 PM - 3:10 PM</td>
-                        <td>Keynote 5</td>
-                    </tr>
-                    <tr>
-                        <td>3:20 PM - 4:00 PM</td>
-                        <td>Intrinsic Bin Picking Challenge: Introduction &amp; Results</td>
-                    </tr>
-                    <tr>
-                        <td>4:00 PM - 5:00 PM</td>
-                        <td>Oral Session for 3 Winning Teams</td>
+                        <td>12:10-1:00p</td>
+                        <td>Presentations of winning teams</td>
                     </tr>
                 </tbody>
             </table>
